@@ -2,14 +2,38 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	</head>
 	<body>
-		<h1 th:text="${message}"></h1>
-		<div th:each="student : ${students}">
-			<div th:text="${student.name}">Nome do Aluno</div>
-			<div th:text="${student.gender}">Sexo</div>
-			<div th:text="${student.registration}">Matrícula</div>
-			<div th:text="${student.birthdate}">Data de nascimento</div>
+		<div th:switch="${students}" class="container mt-5">
+			<h2 th:case="null">Não há alunos cadastrados!</h2>
+			<div th:case="*">
+				<h2>Alunos</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Sexo</th>
+							<th>Matrícula</th>
+							<th>Data de nascimento</th>
+							<th>Editar</th>
+							<th>Excluir</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="student : ${students}">
+							<td th:text="${student.name}">
+							<td th:text="${student.gender}">
+							<td th:text="${student.registration}">
+							<td th:text="${student.birthdate}"></td>
+							<td><a href="#"><span class="material-icons">edit</span></a></td>
+							<td><a href="#" th:action="@{/delete/{id}(id=${student.id})}"><span class="material-icons">delete</span></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>
