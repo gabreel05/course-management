@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1 th:text="${message}"></h1>
+		<div th:each="student : ${students}">
+			<div th:text="${student.name}">Nome do Aluno</div>
+			<div th:text="${student.gender}">Sexo</div>
+			<div th:text="${student.registration}">Matrícula</div>
+			<div th:text="${student.birthdate}">Data de nascimento</div>
+		</div>
+	</body>
+</html>
