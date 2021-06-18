@@ -4,13 +4,20 @@
 		<meta charset="UTF-8">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link 
+			rel="stylesheet" 
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+			crossorigin="anonymous">
 	</head>
 	<body>
-		<div th:switch="${students}" class="container mt-5">
-			<h2 th:case="null">Não há alunos cadastrados!</h2>
-			<div th:case="*">
-				<h2>Alunos</h2>
+		<div class="container mt-5">
+			<div>
+				<a href="/"><span class="material-icons mb-3">arrow_back</span></a>
+				<div class="d-flex justify-content-between mb-5">
+					<h2>Alunos</h2>
+					<button class="btn btn-primary">Adicionar aluno</button>
+				</div>
 				<table class="table">
 					<thead>
 						<tr>
@@ -29,7 +36,11 @@
 							<td th:text="${student.registration}">
 							<td th:text="${student.birthdate}"></td>
 							<td><a href="#"><span class="material-icons">edit</span></a></td>
-							<td><a href="#" th:action="@{/delete/{id}(id=${student.id})}"><span class="material-icons">delete</span></a></td>
+							<td>
+								<a th:href="@{/student/delete/{id}(id=${student.id})}">
+									<span class="material-icons">delete</span>
+								</a>
+							</td>
 						</tr>
 					</tbody>
 				</table>

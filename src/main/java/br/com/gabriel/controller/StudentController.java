@@ -14,13 +14,12 @@ import br.com.gabriel.model.Student;
 import br.com.gabriel.repository.StudentRepository;
 
 @Controller
-@RequestMapping(path = "/student")
 public class StudentController {
 
 	@Autowired
 	private StudentRepository studentRepository;
 
-	@GetMapping
+	@GetMapping("/student")
 	public String student(Model model) {
 		model.addAttribute("message", "Hello Student!");
 
@@ -31,7 +30,7 @@ public class StudentController {
 		return "student";
 	}
 
-	@GetMapping("/delete/{id}")
+	@GetMapping("/student/delete/{id}")
 	public String delete(@PathVariable("id") long id) {
 		studentRepository.deleteById(id);
 
